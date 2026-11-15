@@ -1,6 +1,6 @@
 # Sweety design review
 
-Reviewed on 15 November 2026 with Hallmark 2.0.0, at **polish** depth and **app** scope. This is a design-quality review, not a claim about how the work was authored.
+Reviewed on 15 November 2026 with Hallmark 2.0.0, at **polish** depth and **app** scope, followed by separate browser checks.
 
 ## Intent and preserved behavior
 
@@ -26,13 +26,14 @@ The added theme control appears at the top right of authentication and applicati
 | Initial static Hallmark sweep | 268 Floor findings, 204 Reflex findings, 33 warnings |
 | Final static Hallmark sweep | See `.hallmark/after-static.json`; no open static Floor or Reflex findings at this review |
 | Preserved source wiring | Extractor retained 4/4 links and 40/41 exact handler strings; the auth-switch handler was deliberately replaced to clear the password and is recorded in the stamp |
-| Frontend tests | 10 reading-form tests and 3 theme-preference tests passed |
+| Frontend component tests | 10 reading-form, 3 theme-preference, and 10 chart tests passed |
 | Frontend lint and production build | Passed |
 | Hallmark render tier | Not run |
+| Separate browser checks | Chrome workflows and eight responsive widths passed; see the [QA report](QA-REPORT.md#browser-and-responsive-checks) |
 
 The static extractor did not count React fields; its link/handler numbers do not prove full functional coverage. The existing form tests and browser checks provide that evidence. Likewise, no open static findings does not establish rendered contrast, responsive behavior or keyboard usability.
 
-Hallmark's renderer uses browser automation outside the computer-use surface permitted for this session. The equivalent live checks and screenshots are delegated to the primary agent using the supported browser tools. Do not describe this as a Hallmark render pass. No rendered comparison page is claimed here.
+Rendered checks were performed separately; see the [QA report](QA-REPORT.md#browser-and-responsive-checks). Hallmark's render tier was not run, and no Hallmark rendered comparison is claimed.
 
 The sweep retains 220 notes under polish scope, predominantly existing spacing values, including the separately added chart source. These were preserved rather than reported as fixed. Finish comments explain the quiet secondary controls and unfilled empty-state icons. The brief save/delete status is retained as a live server-confirmation announcement after the dialog closes; this is a documented exception to Hallmark's preference against visible-success toasts.
 
@@ -43,13 +44,13 @@ The sweep retains 220 notes under polish scope, predominantly existing spacing v
 - Rationalize spacing and the type scale across all breakpoints in a dedicated system pass. This polish keeps the page composition.
 - If the auth visual needs more product evidence, replace the factual slot diagram with a real application capture after final UI review. No invented measurements should be introduced.
 
-## Browser control checklist
+## Completed browser review
 
-Check both themes and the saved preference after reload:
+- Chrome: registration into an empty account, wrong-password feedback, sign-out, all four reading slots, every row's Edit/Delete controls, unchanged/conflicting edits, and delete/keep behavior.
+- Validation: missing, out-of-range, decimal, duplicate, full-day and future-date feedback. Impossible-date coverage remains in the API/shared tests.
+- Reports: all three periods, date navigation, a known average, deletion to an empty state, keyboard tab navigation, exact chart-point values, and the complete 34-reading previous-month table.
+- Sessions and focus: dark preference after reload, expired-session feedback during an edit, and focus returning to the originating Edit control after Escape.
+- Recovery: successful retry after server restart and reload after an interrupted readings request.
+- Responsive: dashboard and dark reports at 320, 375, 390, 768, 1024, 1280, 1440 and 1920 px without horizontal document overflow; mobile edit and delete cancellation also passed.
 
-- Authentication: theme, logo, sign-in/sign-up links, all fields, demo fill and submit.
-- Application: home logo, Today, Reports, sign out, theme, previous/next day and date picker.
-- Daily readings: each slot's Add/Edit, log Edit/Delete, empty-state Add and View reports.
-- Dialogs: Close, Escape, Cancel/Keep, Save/Delete and disabled states while requests are pending.
-- Reports: all three tabs, arrow/Home/End navigation, date changes and empty-state Add.
-- Feedback: dismiss notification, reload after a failed data load and retry after connection failure.
+See the [screenshot gallery](../README.md#screenshots-and-demonstration) for the captured states. These recorded checks establish the tested interactions and layouts rather than exhaustive browser or device coverage.

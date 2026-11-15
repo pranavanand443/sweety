@@ -46,20 +46,36 @@ Use these notes to understand and explain the implementation in your own words. 
 8. **What would you improve for a deployed product?**  
    Add account recovery, per-user timezones, exports, and more end-to-end browser coverage. For deployment, configure HTTPS and trusted proxy behavior, use a dedicated database role, and add monitoring and backups. Clinical interpretation would need separate requirements; this app only records and summarizes values.
 
-## Silent demo flow: approximately 2 minutes 40 seconds
+## Two-minute demo flow
 
-Use only the seeded fictional account. Keep the pointer deliberate and pause briefly after each result.
+The final demonstration is exactly 2:00. Every application clip retains its original playback speed; only idle portions are removed. Intro and closing cards each last five seconds. Rendering, frame checks, and full browser playback passed; see the [verification record](QA-REPORT.md#demonstration-video).
+
+The recording uses the fictional demo account. The music and silent versions share the same visual sequence.
 
 | Time | Show |
 |---|---|
-| 0:00–0:20 | Sign-in page, fill demo credentials, sign in, and show the partial daily dashboard. |
-| 0:20–0:45 | Open an empty slot; submit without a value and then with an out-of-range value to show inline validation. |
-| 0:45–1:15 | Save a valid reading, edit its value, and show the updated reading log. |
-| 1:15–1:35 | Delete that reading using the confirmation dialog; show that its slot becomes available. |
-| 1:35–2:15 | Open daily, month-to-date, and previous-month reports. Pause on their date ranges and statistics. |
-| 2:15–2:40 | Choose an empty day, show the helpful empty state, and finish on the responsive dashboard. |
+| 0:00–0:05 | Introduce Sweety and the stack. |
+| 0:05–0:21 | Fill the fictional demo credentials and sign in. |
+| 0:21–0:25 | Show the four daily slots and reading log. |
+| 0:25–0:31 | Show inline feedback for a value below 40 mg/dl. |
+| 0:31–0:37 | Save a valid reading and show the updated daily record. |
+| 0:37–0:41 | Open an existing reading with its details filled in. |
+| 0:41–0:46 | Save the correction and open the updated report. |
+| 0:46–0:51 | Show daily average, highest, lowest, count, and readings. |
+| 0:51–0:57 | Show the inclusive month-to-date period. |
+| 0:57–1:03 | Inspect separate slot trends and missing-date gaps. |
+| 1:03–1:09 | Show the complete previous calendar month and explicit dates. |
+| 1:09–1:15 | Review the same records in the alternate appearance. |
+| 1:15–1:20 | Open the chart's table of recorded values. |
+| 1:20–1:25 | Return to the daily record. |
+| 1:25–1:31 | Inspect the exact reading identified by the delete confirmation. |
+| 1:31–1:36 | Confirm deletion and free its slot. |
+| 1:36–1:42 | Show the report recalculated from the remaining readings. |
+| 1:42–1:48 | Show an empty date and its next action. |
+| 1:48–1:55 | Finish on the daily overview. |
+| 1:55–2:00 | Close with the repository and verification information. |
 
-During review, also create a second account and confirm that its dashboard starts empty. Screenshots should make the dashboard, reports, validation, empty state, and mobile layout readable independently of the recording.
+Account isolation and the mobile layout are covered by the separate browser checks and screenshots. The video is a concise product demonstration, not a replacement for the automated acceptance tests.
 
 ## Before discussing the submission
 

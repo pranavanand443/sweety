@@ -1,10 +1,12 @@
 # Sweety
 
+[![Verify Sweety](https://github.com/pranavanand443/sweety/actions/workflows/ci.yml/badge.svg)](https://github.com/pranavanand443/sweety/actions/workflows/ci.yml)
+
 A small, considered glucose tracker: four daily time slots, clear validation, and reports that make recorded measurements easy to review. Built for the Kenpath full-stack assessment with JavaScript, React, Express, and PostgreSQL.
 
-**[Repository](https://github.com/pranavanand443/sweety)** · **[Interview walkthrough](docs/INTERVIEW-NOTES.md)** · **[API contract](docs/API-CONTRACT.md)**
+**[Repository](https://github.com/pranavanand443/sweety)** · **[Verification record](docs/QA-REPORT.md)** · **[Interview walkthrough](docs/INTERVIEW-NOTES.md)** · **[API contract](docs/API-CONTRACT.md)**
 
-<!-- Insert the verified dashboard capture here: docs/screenshots/dashboard.jpg -->
+![Sweety daily dashboard in the light theme](docs/screenshots/dashboard-light.jpg)
 
 ## What it does
 
@@ -13,6 +15,7 @@ A small, considered glucose tracker: four daily time slots, clear validation, an
 - Record whole numbers from **40–600 mg/dl**, with one reading per slot per day and no future dates.
 - View daily, month-to-date, and previous-month reports with minimum, maximum, one-decimal average, and count.
 - Explore monthly readings in a chart with one series for each time slot and an accessible data table.
+- Switch between light and dark themes; the preference persists after reload.
 - Use responsive layouts, keyboard-accessible forms, inline errors, and friendly empty states.
 - Keep each user's readings private across list, edit, delete, and report queries.
 
@@ -21,6 +24,35 @@ A small, considered glucose tracker: four daily time slots, clear validation, an
 Month-to-date and previous-month reports chart the recorded values by calendar date. Each time slot has a separate color, marker, and line pattern. A missing date breaks that slot's line; the app does not estimate missing readings. The vertical axis scales to the values shown, and colors identify time slots without assigning clinical meaning.
 
 Tab to a point to see its exact date, time slot, and value, or open **View readings as a table** for the complete report. The chart adapts to narrow screens and both appearance themes. Empty periods retain a friendly empty state.
+
+## Screenshots and demonstration
+
+The screenshots use fictional demonstration data. Click an image to inspect it at full size.
+
+| Monthly report | Dark dashboard |
+|---|---|
+| [![Month-to-date report and chart](docs/screenshots/reports-month-to-date.jpg)](docs/screenshots/reports-month-to-date.jpg) | [![Daily dashboard in dark mode](docs/screenshots/dashboard-dark.jpg)](docs/screenshots/dashboard-dark.jpg) |
+| **Inline validation** | **Empty state** |
+| [![Reading validation feedback](docs/screenshots/validation.jpg)](docs/screenshots/validation.jpg) | [![Daily report with no readings](docs/screenshots/empty-state.jpg)](docs/screenshots/empty-state.jpg) |
+| **Mobile dashboard** | **Mobile reports** |
+| [![Mobile daily dashboard](docs/screenshots/mobile-dashboard.jpg)](docs/screenshots/mobile-dashboard.jpg) | [![Mobile report in dark mode](docs/screenshots/mobile-reports-dark.jpg)](docs/screenshots/mobile-reports-dark.jpg) |
+
+**Two-minute demonstration:** [Music version](docs/demo.mp4) · [Silent version](docs/demo-silent.mp4). Both files are exactly 2:00, with identical visuals; the music version adds a gentle instrumental soundtrack without narration.
+
+The edit removes idle time while keeping every application clip at normal speed. Rendering, full playback, and representative frame checks are recorded in the [verification record](docs/QA-REPORT.md#demonstration-video). The walkthrough covers:
+
+| Time | Workflow |
+|---|---|
+| 0:00–0:05 | Introduction. |
+| 0:05–0:25 | Sign in and review the four daily slots. |
+| 0:25–0:46 | Validate, add, and edit a reading. |
+| 0:46–1:09 | Daily, month-to-date, and previous-month reports. |
+| 1:09–1:25 | Inspect the report table and return to the daily record. |
+| 1:25–1:42 | Confirm deletion and inspect recalculated reports. |
+| 1:42–1:55 | Empty-state guidance and the daily overview. |
+| 1:55–2:00 | Repository and verification information. |
+
+The [timecoded walkthrough notes](docs/INTERVIEW-NOTES.md#two-minute-demo-flow) describe each section in detail.
 
 ## Quick start with Docker
 
@@ -78,7 +110,7 @@ PostgreSQL is exposed only on `127.0.0.1:54329`; the local databases are `sweety
 | `TEST_DATABASE_URL` | Separate disposable test database; its name must end in `_test`. |
 | `SESSION_SECRET` | Secret used to sign session IDs; at least 32 characters. |
 | `PORT` | Express port; defaults to `4310`. |
-| `APP_ORIGIN` | Comma-separated allowed browser origins; the example allows localhost and 127.0.0.1 on port 5173. |
+| `APP_ORIGIN` | Comma-separated allowed browser origins; the example allows localhost and 127.0.0.1 on ports 5173 and 4310. |
 | `APP_TIMEZONE` | Timezone defining today; defaults to `Asia/Kolkata`. |
 | `COOKIE_SECURE` | `false` for the documented local HTTP setup; use `true` for HTTPS deployment. |
 | `NODE_ENV` | Runtime environment; local development uses `development`. |
@@ -121,6 +153,8 @@ docker compose exec db createdb -U sweety sweety_test
 ```
 
 GitHub Actions runs the same verification command with a dedicated PostgreSQL 17 service on pushes and pull requests.
+
+The [verification record](docs/QA-REPORT.md) documents the tested commit, **80 passing tests**, a fresh installation rehearsal, Docker image build, browser workflows, and responsive checks from 320–1920 px.
 
 ### Assessment coverage
 
@@ -179,4 +213,4 @@ Create and edit payloads contain `{ "date": "2026-11-15", "slot": "morning_fasti
 - **Authentication:** bcrypt uses cost 12; passwords must be at least eight characters and at most 72 UTF-8 bytes. Sessions use HttpOnly, SameSite=Lax cookies with login-time regeneration and server-side logout. JSON writes check browser origin; authentication attempts are rate-limited.
 - **Scope:** Docker Compose, monthly charts, and frontend form/chart tests are included. Hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission. The app is a measurement record, with fictional data for its demonstration.
 - **With more time:** add per-user timezones, account recovery, report export, and broader browser automation. Deployment would also need HTTPS/proxy configuration, operational monitoring, and a separate non-superuser database role.
-- **AI assistance:** OpenAI Codex assisted with implementation, tests, documentation, and independent code review. This repository records that assistance openly; the accompanying walkthrough explains the decisions and tradeoffs for candidate review.
+- **AI assistance:** OpenAI Codex assisted with implementation, tests, documentation, and independent code review. This repository records that assistance openly. The [interview notes](docs/INTERVIEW-NOTES.md) explain the architecture and tradeoffs for candidate preparation; the video demonstrates the product workflow.
