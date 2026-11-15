@@ -12,15 +12,26 @@ export async function seed(pool, referenceDate = todayInZone(process.env.APP_TIM
   const ranges = reportRanges(referenceDate);
   const fixtures = new Map();
   const add = (date, slotIndex, value) => fixtures.set(`${date}:${slotIndex}`, { date, slot: SLOTS[slotIndex].value, value });
-  // A partial day invites a reviewer to add a reading; previous-month samples exercise reports.
+  const addSampleDay = (prefix, day, index) => {
+    const date = `${prefix}-${String(day).padStart(2, '0')}`;
+    for (let slot = 0; slot < SLOTS.length; slot += 1) {
+      // Deliberate missing slots demonstrate gaps rather than fabricated/interpolated data.
+      if (slot > 0 && (index + slot) % 5 === 0) continue;
+      add(date, slot, 92 + ((day * 7 + slot * 19 + index * 3) % 88));
+    }
+  };
+  const currentDay = Number(referenceDate.slice(8));
+  for (let day = Math.max(1, currentDay - 6); day < currentDay; day += 1) {
+    addSampleDay(referenceDate.slice(0, 7), day, day);
+  }
+  const previousMonthDays = Number(ranges.previousMonth.endDate.slice(8));
+  for (let index = 0; index < 10; index += 1) {
+    const day = 1 + Math.floor(index * (previousMonthDays - 1) / 9);
+    addSampleDay(ranges.previousMonth.startDate.slice(0, 7), day, index);
+  }
+  // Keep today's fixtures partial so a reviewer can add the remaining two slots.
   add(referenceDate, 0, 104);
   add(referenceDate, 1, 136);
-  add(ranges.monthToDate.startDate, 0, 98);
-  add(ranges.monthToDate.startDate, 2, 145);
-  add(ranges.previousMonth.startDate, 0, 112);
-  add(ranges.previousMonth.startDate, 1, 142);
-  add(ranges.previousMonth.endDate, 2, 158);
-  add(ranges.previousMonth.endDate, 3, 128);
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 12);
   const result = await transaction(pool, async (db) => {
     // Reserved fictional account only; other accounts and their readings are never touched.

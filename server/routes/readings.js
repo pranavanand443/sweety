@@ -28,7 +28,11 @@ function validateBody(body, today) {
 }
 
 export async function dailyReadings(db, userId, date) {
-  return (await db.query(`SELECT ${columns} FROM readings WHERE user_id = $1 AND reading_date = $2 ORDER BY array_position($3::text[], slot)`, [userId, date, slotValues])).rows;
+  return rangeReadings(db, userId, date, date);
+}
+
+export async function rangeReadings(db, userId, startDate, endDate) {
+  return (await db.query(`SELECT ${columns} FROM readings WHERE user_id = $1 AND reading_date BETWEEN $2::date AND $3::date ORDER BY reading_date, array_position($4::text[], slot)`, [userId, startDate, endDate, slotValues])).rows;
 }
 
 async function saveReading(pool, userId, input, id) {
@@ -43,7 +47,7 @@ async function saveReading(pool, userId, input, id) {
     if (rows.length >= 4) throw new ApiError(409, 'DAY_FULL', 'You can add only 4 readings per day.', { date: 'You can add only 4 readings per day.' });
     if (rows.some((row) => row.slot === input.slot)) {
       const label = SLOTS.find((slot) => slot.value === input.slot).label;
-      throw new ApiError(409, 'DUPLICATE_SLOT', `You already have an ${label} reading for this date.`, { slot: `You already have a reading for ${label} on this date.` });
+      throw new ApiError(409, 'DUPLICATE_SLOT', `You already have a reading for ${label} on this date.`, { slot: `You already have a reading for ${label} on this date.` });
     }
     const result = id
       ? await db.query(`UPDATE readings SET reading_date = $1, slot = $2, value = $3, updated_at = now() WHERE id = $4 AND user_id = $5 RETURNING ${columns}`, [input.date, input.slot, input.value, id, userId])

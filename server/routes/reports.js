@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { reportRanges } from '../../shared/domain.js';
-import { dailyReadings, selectedDate } from './readings.js';
+import { rangeReadings, selectedDate } from './readings.js';
 
 // PostgreSQL names astronomical year zero "1 BC"; ordinary app dates stay ISO strings.
 const sqlDate = (date) => date.startsWith('0000-') ? `${date.replace(/^0000/, '0001')} BC` : date;
@@ -19,9 +19,9 @@ export function reportsRouter({ pool, today, config, requireUser }) {
       await db.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
       for (const [name, range] of Object.entries(ranges)) {
         const { rows: [summary] } = await db.query('SELECT count(*)::int AS count, min(value) AS min, max(value) AS max, round(avg(value), 1)::float8 AS average FROM readings WHERE user_id = $1 AND reading_date BETWEEN $2::date AND $3::date', [req.user.id, sqlDate(range.startDate), sqlDate(range.endDate)]);
-        reports[name] = { ...range, ...summary };
+        const readings = await rangeReadings(db, req.user.id, sqlDate(range.startDate), sqlDate(range.endDate));
+        reports[name] = { ...range, ...summary, readings };
       }
-      reports.daily.readings = await dailyReadings(db, req.user.id, date);
       await db.query('COMMIT');
     } catch (error) {
       await db.query('ROLLBACK');
