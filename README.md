@@ -8,7 +8,7 @@ Glucose readings, four times a day. Sweety keeps a daily log and calculates dail
 
 JavaScript · React · Express · PostgreSQL
 
-**[Repository](https://github.com/pranavanand443/sweety)** · **[Verification record](docs/QA-REPORT.md)** · **[Interview walkthrough](docs/INTERVIEW-NOTES.md)** · **[API contract](docs/API-CONTRACT.md)**
+**[Watch the demo](https://pranavanand443.github.io/sweety/#demo)** · **[Screenshots](https://pranavanand443.github.io/sweety/#screenshots)** · **[Verification record](docs/QA-REPORT.md)** · **[Code walkthrough](docs/INTERVIEW-NOTES.md)** · **[API contract](docs/API-CONTRACT.md)**
 
 ![Sweety daily dashboard in the light theme](docs/screenshots/dashboard-light.jpg)
 
@@ -41,7 +41,7 @@ The screenshots use fictional demonstration data. Click an image to inspect it a
 | **Mobile dashboard** | **Mobile reports** |
 | [![Mobile daily dashboard](docs/screenshots/mobile-dashboard.jpg)](docs/screenshots/mobile-dashboard.jpg) | [![Mobile report in dark mode](docs/screenshots/mobile-reports-dark.jpg)](docs/screenshots/mobile-reports-dark.jpg) |
 
-**Two-minute demonstration:** [Music version](docs/demo.mp4) · [Silent version](docs/demo-silent.mp4). Both files are exactly 2:00, with identical visuals; the music version adds a gentle instrumental soundtrack without narration.
+**[Watch the two-minute demonstration](https://pranavanand443.github.io/sweety/#demo)** in the browser, or download the [music version](docs/demo.mp4) or [silent version](docs/demo-silent.mp4). Both files are exactly 2:00, with identical visuals; the music version adds a gentle instrumental soundtrack without narration.
 
 The video shows sign-in, validation, adding/editing/deleting a reading, all three reports, the chart and data table, and an empty date. Idle time is cut; application clips play at their original speed. See the [timecoded walkthrough](docs/INTERVIEW-NOTES.md#two-minute-demo-flow) and [playback checks](docs/QA-REPORT.md#demonstration-video).
 
@@ -204,6 +204,6 @@ Create and edit payloads contain `{ "date": "2026-11-15", "slot": "morning_fasti
 - **Averages:** every reading has equal weight; the average is rounded to one decimal, without averaging daily averages.
 - **Validation precedence:** a create on a full day returns the daily-limit error; otherwise a duplicate slot returns a slot conflict. Edits exclude the row being edited, so an unchanged save on a full day works.
 - **Authentication:** bcrypt uses cost 12; passwords must be at least eight characters and at most 72 UTF-8 bytes. Sessions use HttpOnly, SameSite=Lax cookies with login-time regeneration and server-side logout. JSON writes check browser origin; authentication attempts are rate-limited.
-- **Scope:** Docker Compose, monthly charts, and frontend form/chart tests are included. Hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission. The app is a measurement record, with fictional data for its demonstration.
+- **Scope:** Docker Compose, monthly charts, and frontend form/chart tests are included. The GitHub Pages site hosts the video and screenshots; the application runs locally. Live application hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission.
 - **With more time:** add per-user timezones, account recovery, report export, and broader browser automation. Deployment would also need HTTPS/proxy configuration, operational monitoring, and a separate non-superuser database role.
 - **Tools used:** OpenAI Codex assisted with implementation, tests, documentation, and review. Hallmark informed the [interface review](docs/DESIGN-REVIEW.md). The [walkthrough notes](docs/INTERVIEW-NOTES.md) cover the code and its tradeoffs.
