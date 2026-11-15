@@ -58,7 +58,7 @@
       "lint": "passed: client and ThemeToggle test",
       "tests": "13 RTL tests passed (10 form, 3 theme)",
       "build": "passed",
-      "render": "not run by sloplint; higher-priority computer-use policy requires cua. Parent owns visual review."
+      "render": "Hallmark's render tier was not run. Separate browser and responsive checks are recorded in docs/QA-REPORT.md."
     }
   }
 ]

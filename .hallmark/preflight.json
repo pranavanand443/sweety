@@ -42,5 +42,5 @@
     "client/src/App.jsx:117 reports",
     "client/src/styles.css:1 existing palette and font stacks"
   ],
-  "render": "Not run by Hallmark: computer-use policy requires cua; parent is performing the equivalent visual review."
+  "render": "Hallmark's render tier was not run. Separate browser and responsive checks are recorded in docs/QA-REPORT.md."
 }

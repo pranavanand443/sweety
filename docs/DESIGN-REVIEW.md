@@ -1,48 +1,48 @@
 # Sweety design review
 
-Reviewed on 15 November 2026 with Hallmark 2.0.0, at **polish** depth and **app** scope, followed by separate browser checks.
+Reviewed on 15 November 2026 using Hallmark 2.0.0 and separate browser checks.
 
-## Intent and preserved behavior
+## Interface decisions
 
-The app serves a person recording glucose readings and an evaluator checking the assessment. The primary action is to record a reading for a date and time slot. The existing calm teal direction, sidebar, daily slots, report panels, routes, forms, validation and API calls remain.
+The dashboard centers on four daily slots, with a reading log below them. Reports use the same date selector and show the exact period being summarized. The review kept that structure, the teal palette, and the existing routes, forms, validation, and API calls.
 
-The added theme control appears at the top right of authentication and application screens. It defaults to light, saves `sweety.theme` locally and supports dark mode. A small external script applies the saved theme before the app renders, without requiring an inline-script exception to the server's security policy. Storage failures leave the control usable for the current page.
+The appearance control sits at the top right of sign-in and application screens. Light is the default; `sweety.theme` saves the choice locally. A small external script applies it before React renders and works with the server's security policy. If browser storage is unavailable, switching still works for the current page.
 
-## Findings addressed
+## Changes made
 
 - Replaced promotional headings and encouragement with labels tied to the task: Daily readings, Daily time slots and specific empty states.
-- Removed decorative eyebrow copy, tracked capital labels, ornamental navigation dots and arrow suffixes.
-- Consolidated colors and font stacks into role-named tokens. Light and dark palettes share the same roles.
-- Improved text and input-edge contrast, added immediate keyboard focus and active states, expanded small icon hit targets and retained reduced-motion support.
+- Removed small decorative headings, widely spaced capital labels, navigation dots, and unnecessary arrows.
+- Put colors and fonts in shared tokens, with matching roles for light and dark palettes.
+- Improved text and input-border contrast, made keyboard focus visible, enlarged small icon controls, and retained reduced-motion support.
 - Cleared passwords when switching between sign-in and sign-up, and returned expired save/delete sessions to sign-in with an explicit notice.
-- Added tabular numerals to measurements and report statistics, and arrow/Home/End keyboard navigation to report tabs.
-- Replaced the decorative auth trend with the four actual reading slots. It makes no claim about a patient's trend or outcome.
-- Preserved the layout while removing decorative hover movement, backdrop blur and redundant shadow treatments.
+- Used equal-width numerals for measurements and statistics, and added arrow/Home/End navigation to report tabs.
+- Replaced the decorative sign-in chart with the four reading slots, avoiding an implied patient trend.
+- Removed hover movement, backdrop blur, and extra shadows while keeping the layout.
 
-## Verification and limits
+## Checks
 
 | Check | Recorded result |
 | --- | --- |
 | Initial static Hallmark sweep | 268 Floor findings, 204 Reflex findings, 33 warnings |
 | Final static Hallmark sweep | See `.hallmark/after-static.json`; no open static Floor or Reflex findings at this review |
-| Preserved source wiring | Extractor retained 4/4 links and 40/41 exact handler strings; the auth-switch handler was deliberately replaced to clear the password and is recorded in the stamp |
+| Links and event handlers | The extractor retained 4/4 links and 40/41 exact handler strings. The changed auth-switch handler clears the password. |
 | Frontend component tests | 10 reading-form, 3 theme-preference, and 10 chart tests passed |
 | Frontend lint and production build | Passed |
 | Hallmark render tier | Not run |
 | Separate browser checks | Chrome workflows and eight responsive widths passed; see the [QA report](QA-REPORT.md#browser-and-responsive-checks) |
 
-The static extractor did not count React fields; its link/handler numbers do not prove full functional coverage. The existing form tests and browser checks provide that evidence. Likewise, no open static findings does not establish rendered contrast, responsive behavior or keyboard usability.
+Hallmark ran at `polish` depth and `app` scope. Its extractor did not count React fields, and its static findings do not establish rendered contrast or working interactions. Form tests and the browser checks below cover those separately.
 
-Rendered checks were performed separately; see the [QA report](QA-REPORT.md#browser-and-responsive-checks). Hallmark's render tier was not run, and no Hallmark rendered comparison is claimed.
+Rendered checks were performed separately; see the [QA report](QA-REPORT.md#browser-and-responsive-checks). Hallmark's render tier was not run.
 
-The sweep retains 220 notes under polish scope, predominantly existing spacing values, including the separately added chart source. These were preserved rather than reported as fixed. Finish comments explain the quiet secondary controls and unfilled empty-state icons. The brief save/delete status is retained as a live server-confirmation announcement after the dialog closes; this is a documented exception to Hallmark's preference against visible-success toasts.
+The static sweep still has 220 notes, mostly about existing spacing values, including the chart. Those values were left in place. Source comments explain the subdued secondary controls and outline icons in empty states. The brief save/delete confirmation also stays: it announces the server result after the dialog closes, despite Hallmark's general preference against success toasts.
 
-## Improvements requiring a deeper redesign
+## Possible follow-ups
 
-- Reconsider whether a permanent sidebar is needed for two destinations. A compact navigation bar could return more space to readings, but would change the existing shell.
-- Consider inline editing in the reading log instead of a dialog. The current native dialog preserves focus trapping and existing workflows.
-- Rationalize spacing and the type scale across all breakpoints in a dedicated system pass. This polish keeps the page composition.
-- If the auth visual needs more product evidence, replace the factual slot diagram with a real application capture after final UI review. No invented measurements should be introduced.
+- A smaller navigation bar could give readings more space; there are only two destinations.
+- Inline editing could shorten the reading workflow. The current native dialog already handles focus trapping and returning focus when closed.
+- Spacing and font sizes could be made more consistent across breakpoints in a separate layout revision.
+- A real application screenshot could replace the slot diagram on sign-in if a preview would be more useful there.
 
 ## Completed browser review
 
@@ -53,4 +53,4 @@ The sweep retains 220 notes under polish scope, predominantly existing spacing v
 - Recovery: successful retry after server restart and reload after an interrupted readings request.
 - Responsive: dashboard and dark reports at 320, 375, 390, 768, 1024, 1280, 1440 and 1920 px without horizontal document overflow; mobile edit and delete cancellation also passed.
 
-See the [screenshot gallery](../README.md#screenshots-and-demonstration) for the captured states. These recorded checks establish the tested interactions and layouts rather than exhaustive browser or device coverage.
+See the [screenshot gallery](../README.md#screenshots-and-demonstration) for the captured states. These checks cover the listed workflows and browser widths; physical devices were not tested.

@@ -1,16 +1,16 @@
 # Sweety: walkthrough and interview notes
 
-## A short introduction
+## Overview
 
-Sweety records up to four glucose readings per day and summarizes them over three precise date ranges. The main engineering choices are database-enforced limits, explicit user ownership, and consistent calendar dates. React handles interaction; Express owns authentication and validation; PostgreSQL is the source of truth.
+Sweety records up to four glucose readings per day, then summarizes them for the selected day, month to date, and previous month. React handles the forms and reports, Express checks requests and sessions, and PostgreSQL stores the data and enforces reading limits.
 
-Use these notes to understand and explain the implementation in your own words. Codex assisted with the implementation and review; do not claim that tooling was not used.
+Codex assisted with implementation and review. These notes cover the decisions to understand and explain when discussing the code.
 
-## The important decisions
+## Implementation choices
 
 **Dates are calendar values.** A reading belongs to a date and a named slot, not a measurement timestamp. SQL `DATE` and unchanged `YYYY-MM-DD` strings avoid moving readings to another day during timezone conversion. The server determines today in Asia/Kolkata.
 
-**The database enforces the limits.** A reading has one of four allowed slots. A unique constraint covers user, date, and slot. Together, these prevent both duplicate slots and a fifth daily reading. API validation supplies useful messages; it is not the only protection.
+**The database enforces the limits.** A reading has one of four allowed slots. A unique constraint covers user, date, and slot. Together, these prevent both duplicate slots and a fifth daily reading. API validation adds readable error messages.
 
 **Ownership comes from the session.** Each query includes the authenticated user's ID. An ID from the browser does not establish ownership. Attempts to edit or delete another user's reading return 404, and report queries filter by the same user ID.
 
@@ -18,37 +18,37 @@ Use these notes to understand and explain the implementation in your own words. 
 
 **A report has a precise range.** Daily is the selected day. Month-to-date starts on the first of that month and ends on the selected day. Monthly means the complete previous month. The average uses all readings directly, with one-decimal rounding.
 
-**The project favors a small complete system.** A single Express application, one PostgreSQL database, and a React client are sufficient here. Redis and background jobs would add setup and failure modes without improving the required workflow.
+**PostgreSQL also stores sessions.** This keeps the app to one database and one server. The required reading and report operations run directly in a request, so there is no queue or background worker.
 
-## Eight likely questions
+## Questions to prepare for
 
 1. **Why PostgreSQL when the brief says MERN?**  
-   Its explicit requirements call for PostgreSQL. Relational constraints also suit the one-user, one-date, one-slot rule directly.
+   The brief explicitly requires PostgreSQL. Its constraints also fit the rule that each user can have only one reading per date and slot.
 
 2. **What happens if two requests add the same slot at once?**  
-   Both mutations acquire a lock on the user's row inside a transaction. They are checked in order, so the later request sees the earlier insert. The unique constraint remains a final backstop if another code path bypasses the check.
+   Each request locks the user's row inside a transaction. The second waits for the first, then sees the inserted reading and returns a conflict. The unique constraint also prevents duplicates if another code path bypasses this check.
 
 3. **Why lock the user rather than only the reading?**  
-   A new reading does not yet have a row to lock. Locking the existing user row gives creates, edits, and deletes a shared lock. This deliberately simple strategy is appropriate for at most four daily readings; higher-volume systems could use a narrower per-day lock.
+   A new reading does not yet have a row to lock. Creates, edits, and deletes can all lock the existing user row. That also serializes changes to different dates for the same user, which is acceptable at this scale. A busier system could use a lock for each user and date.
 
 4. **How do you prevent one user seeing another user's data?**  
    The API loads the user from the session and adds their ID to every list, update, delete, and aggregate query. Tests use two accounts, deliberately spoof a user ID, and attempt cross-user mutations.
 
 5. **Why store sessions in PostgreSQL instead of browser local storage?**  
-   It uses the database already required by the app and allows immediate server-side logout. HttpOnly cookies keep the session identifier unavailable to application JavaScript. It avoids adding token refresh logic or another service for this assessment.
+   PostgreSQL is already part of the app, and deleting a stored session takes effect immediately on logout. The browser receives an HttpOnly cookie, so application JavaScript cannot read the session identifier. There is no token-refresh flow to maintain.
 
 6. **How did you handle dates and report boundaries?**  
    Strict calendar validation rejects impossible dates, while the server's configured timezone defines today. Date-only strings stay date-only in the database driver. Tests cover January rollover, February, leap years, both inclusive boundaries, and readings outside the selected range.
 
 7. **Which tests matter most?**  
-   The real PostgreSQL API tests cover bcrypt/session behavior, cross-user access, concurrent duplicates, full days, edit collisions, and exact report calculations. Shared tests cover date arithmetic and validation. Form tests cover how users see errors and saving behavior. Linting and the production build run in the same verification command.
+   The PostgreSQL API tests exercise the failures most likely to break the data: cross-user access, concurrent duplicate requests, full days, conflicting edits, and incorrect report totals. They also check password hashing and sessions. Shared tests cover dates and validation; form tests check errors and saving behavior. `npm run verify` runs the tests, lint, and production build together.
 
 8. **What would you improve for a deployed product?**  
    Add account recovery, per-user timezones, exports, and more end-to-end browser coverage. For deployment, configure HTTPS and trusted proxy behavior, use a dedicated database role, and add monitoring and backups. Clinical interpretation would need separate requirements; this app only records and summarizes values.
 
 ## Two-minute demo flow
 
-The final demonstration is exactly 2:00. Every application clip retains its original playback speed; only idle portions are removed. Intro and closing cards each last five seconds. Rendering, frame checks, and full browser playback passed; see the [verification record](QA-REPORT.md#demonstration-video).
+The demonstration is exactly 2:00, with application clips at their original speed and five-second opening and closing cards. See the [verification record](QA-REPORT.md#demonstration-video) for rendering and playback checks.
 
 The recording uses the fictional demo account. The music and silent versions share the same visual sequence.
 
@@ -75,7 +75,7 @@ The recording uses the fictional demo account. The music and silent versions sha
 | 1:48–1:55 | Finish on the daily overview. |
 | 1:55–2:00 | Close with the repository and verification information. |
 
-Account isolation and the mobile layout are covered by the separate browser checks and screenshots. The video is a concise product demonstration, not a replacement for the automated acceptance tests.
+Account isolation and the mobile layout are covered in the separate browser checks and screenshots. The automated tests cover the input and concurrency cases beyond this walkthrough.
 
 ## Before discussing the submission
 

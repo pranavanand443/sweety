@@ -2,7 +2,11 @@
 
 [![Verify Sweety](https://github.com/pranavanand443/sweety/actions/workflows/ci.yml/badge.svg)](https://github.com/pranavanand443/sweety/actions/workflows/ci.yml)
 
-A small, considered glucose tracker: four daily time slots, clear validation, and reports that make recorded measurements easy to review. Built for the Kenpath full-stack assessment with JavaScript, React, Express, and PostgreSQL.
+Glucose readings, four times a day. Sweety keeps a daily log and calculates daily, month-to-date, and previous-month reports.
+
+**Kenpath full-stack assessment · Pranav Anand**
+
+JavaScript · React · Express · PostgreSQL
 
 **[Repository](https://github.com/pranavanand443/sweety)** · **[Verification record](docs/QA-REPORT.md)** · **[Interview walkthrough](docs/INTERVIEW-NOTES.md)** · **[API contract](docs/API-CONTRACT.md)**
 
@@ -39,20 +43,7 @@ The screenshots use fictional demonstration data. Click an image to inspect it a
 
 **Two-minute demonstration:** [Music version](docs/demo.mp4) · [Silent version](docs/demo-silent.mp4). Both files are exactly 2:00, with identical visuals; the music version adds a gentle instrumental soundtrack without narration.
 
-The edit removes idle time while keeping every application clip at normal speed. Rendering, full playback, and representative frame checks are recorded in the [verification record](docs/QA-REPORT.md#demonstration-video). The walkthrough covers:
-
-| Time | Workflow |
-|---|---|
-| 0:00–0:05 | Introduction. |
-| 0:05–0:25 | Sign in and review the four daily slots. |
-| 0:25–0:46 | Validate, add, and edit a reading. |
-| 0:46–1:09 | Daily, month-to-date, and previous-month reports. |
-| 1:09–1:25 | Inspect the report table and return to the daily record. |
-| 1:25–1:42 | Confirm deletion and inspect recalculated reports. |
-| 1:42–1:55 | Empty-state guidance and the daily overview. |
-| 1:55–2:00 | Repository and verification information. |
-
-The [timecoded walkthrough notes](docs/INTERVIEW-NOTES.md#two-minute-demo-flow) describe each section in detail.
+The video shows sign-in, validation, adding/editing/deleting a reading, all three reports, the chart and data table, and an empty date. Idle time is cut; application clips play at their original speed. See the [timecoded walkthrough](docs/INTERVIEW-NOTES.md#two-minute-demo-flow) and [playback checks](docs/QA-REPORT.md#demonstration-video).
 
 ## Quick start with Docker
 
@@ -183,6 +174,8 @@ docs/               API contract, walkthrough notes, and demonstration assets
 
 React talks to the API through the same origin. Express identifies the user from a server-side session and applies that user's ID to each database operation. PostgreSQL stores users, readings, and sessions. In Docker, Express serves the built React app; development uses Vite's proxy.
 
+The server uses `pg` directly. The queries and transaction boundaries are short enough to read alongside each route, and the database constraints are visible in one SQL migration. Shared validation keeps the browser and API rules consistent; PostgreSQL enforces the rules that must hold during concurrent requests.
+
 The unique `(user_id, reading_date, slot)` constraint and four allowed slot values make a fifth reading impossible. A short transaction locks the user's row before checking conflicts, so simultaneous requests receive consistent duplicate/full-day errors. Parameterized queries protect query values. Reports use one read-only snapshot so their statistics and reading lists agree during concurrent changes.
 
 ### API overview
@@ -213,4 +206,4 @@ Create and edit payloads contain `{ "date": "2026-11-15", "slot": "morning_fasti
 - **Authentication:** bcrypt uses cost 12; passwords must be at least eight characters and at most 72 UTF-8 bytes. Sessions use HttpOnly, SameSite=Lax cookies with login-time regeneration and server-side logout. JSON writes check browser origin; authentication attempts are rate-limited.
 - **Scope:** Docker Compose, monthly charts, and frontend form/chart tests are included. Hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission. The app is a measurement record, with fictional data for its demonstration.
 - **With more time:** add per-user timezones, account recovery, report export, and broader browser automation. Deployment would also need HTTPS/proxy configuration, operational monitoring, and a separate non-superuser database role.
-- **AI assistance:** OpenAI Codex assisted with implementation, tests, documentation, and independent code review. This repository records that assistance openly. The [interview notes](docs/INTERVIEW-NOTES.md) explain the architecture and tradeoffs for candidate preparation; the video demonstrates the product workflow.
+- **Tools used:** OpenAI Codex assisted with implementation, tests, documentation, and review. Hallmark informed the [interface review](docs/DESIGN-REVIEW.md). The [walkthrough notes](docs/INTERVIEW-NOTES.md) cover the code and its tradeoffs.
