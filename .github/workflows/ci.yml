@@ -1,0 +1,51 @@
+name: Verify Sweety
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17-bookworm
+        env:
+          POSTGRES_USER: sweety
+          POSTGRES_PASSWORD: sweety_local
+          POSTGRES_DB: sweety_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U sweety -d sweety_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://sweety:sweety_local@localhost:5432/sweety
+      TEST_DATABASE_URL: postgresql://sweety:sweety_local@localhost:5432/sweety_test
+      APP_TIMEZONE: Asia/Kolkata
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Lint, test against PostgreSQL, and build
+        run: npm run verify
