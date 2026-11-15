@@ -25,7 +25,8 @@ export function reportRanges(date) {
   const previousYear = month === 1 ? year - 1 : year;
   const previousMonth = month === 1 ? 12 : month - 1;
   const prefix = `${String(previousYear).padStart(4, '0')}-${String(previousMonth).padStart(2, '0')}`;
-  const lastDay = new Date(Date.UTC(year, month - 1, 0)).getUTCDate();
+  const leap = previousYear % 4 === 0 && (previousYear % 100 !== 0 || previousYear % 400 === 0);
+  const lastDay = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][previousMonth - 1];
   return {
     daily: { startDate: date, endDate: date },
     monthToDate: { startDate: `${date.slice(0, 7)}-01`, endDate: date },

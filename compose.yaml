@@ -1,0 +1,40 @@
+name: sweety
+services:
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: sweety
+      POSTGRES_PASSWORD: sweety_local
+      POSTGRES_DB: sweety
+    ports:
+      - "127.0.0.1:54329:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-test-db.sql:/docker-entrypoint-initdb.d/01-test.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sweety -d sweety"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: postgresql://sweety:sweety_local@db:5432/sweety
+      SESSION_SECRET: ${SESSION_SECRET:?Run node scripts/setup-env.js first}
+      APP_ORIGIN: http://localhost:3000
+      APP_TIMEZONE: Asia/Kolkata
+      COOKIE_SECURE: "false"
+      NODE_ENV: production
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/config').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:
