@@ -12,8 +12,15 @@ A small, considered glucose tracker: four daily time slots, clear validation, an
 - Add, edit, and delete readings in Morning (fasting), After breakfast, After lunch, and After dinner slots.
 - Record whole numbers from **40–600 mg/dl**, with one reading per slot per day and no future dates.
 - View daily, month-to-date, and previous-month reports with minimum, maximum, one-decimal average, and count.
+- Explore monthly readings in a chart with one series for each time slot and an accessible data table.
 - Use responsive layouts, keyboard-accessible forms, inline errors, and friendly empty states.
 - Keep each user's readings private across list, edit, delete, and report queries.
+
+### Monthly charts
+
+Month-to-date and previous-month reports chart the recorded values by calendar date. Each time slot has a separate color, marker, and line pattern. A missing date breaks that slot's line; the app does not estimate missing readings. The vertical axis scales to the values shown, and colors identify time slots without assigning clinical meaning.
+
+Tab to a point to see its exact date, time slot, and value, or open **View readings as a table** for the complete report. The chart adapts to narrow screens and both appearance themes. Empty periods retain a friendly empty state.
 
 ## Quick start with Docker
 
@@ -81,7 +88,7 @@ Compose supplies its own internal database URL, port-4310 origins, and local HTT
 
 ### Seed behavior
 
-The seed creates the fictional Alex Morgan account, a partial current day, current-month readings, and previous-month readings. Running it again with the **same reference date** updates the same fixtures without creating duplicates. It resets the reserved demo account's password and fixture values; it does not clear other accounts or readings. Running with a different date adds that date's fixtures while retaining earlier ones.
+The seed creates the fictional Alex Morgan account with readings on up to seven dates in the current month and ten spaced dates in the previous month. On a fresh database, the reference date has two readings, leaving two slots to try. Some sample dates intentionally omit slots to demonstrate chart gaps. Running it again with the **same reference date** updates the same fixtures without creating duplicates. It resets the reserved demo account's password and fixture values; it does not clear other accounts or readings. Running with a different date adds that date's fixtures while retaining earlier ones.
 
 For a repeatable reference date in development:
 
@@ -103,6 +110,7 @@ This runs linting, all tests, and the production frontend build. The API suite a
 |---|---|
 | `npm run test:unit` | Date/validation logic and reading-form behavior. |
 | `npm run test:api` | Authentication, ownership, constraints, concurrency, reports, and seed behavior against PostgreSQL. |
+| `npx vitest run tests/TrendChart.test.jsx` | Calendar spacing, missing-date gaps, slot separation, empty/single-reading scales, and accessible chart data. |
 | `npm run lint` | JavaScript and React rules. |
 | `npm run build` | Production frontend compilation. |
 
@@ -126,6 +134,7 @@ GitHub Actions runs the same verification command with a dedicated PostgreSQL 17
 | Exact report periods and arithmetic | API inclusive-range, year-rollover, leap-year, and empty-aggregate cases. |
 | Repeatable demo seed | API case “re-seeds the same reference date without duplicates or changes to other users.” |
 | Form errors and saving behavior | `tests/ReadingForm.test.jsx`. |
+| Optional monthly charts | `tests/TrendChart.test.jsx`, plus API report-series boundary and ownership checks. |
 
 ## How it is organized
 
@@ -140,7 +149,7 @@ docs/               API contract, walkthrough notes, and demonstration assets
 
 React talks to the API through the same origin. Express identifies the user from a server-side session and applies that user's ID to each database operation. PostgreSQL stores users, readings, and sessions. In Docker, Express serves the built React app; development uses Vite's proxy.
 
-The unique `(user_id, reading_date, slot)` constraint and four allowed slot values make a fifth reading impossible. A short transaction locks the user's row before checking conflicts, so simultaneous requests receive consistent duplicate/full-day errors. Parameterized queries protect query values. Reports use one read-only snapshot so their statistics and daily list agree during concurrent changes.
+The unique `(user_id, reading_date, slot)` constraint and four allowed slot values make a fifth reading impossible. A short transaction locks the user's row before checking conflicts, so simultaneous requests receive consistent duplicate/full-day errors. Parameterized queries protect query values. Reports use one read-only snapshot so their statistics and reading lists agree during concurrent changes.
 
 ### API overview
 
@@ -154,7 +163,7 @@ All bodies and responses use JSON. Authenticated endpoints use the session cooki
 | `GET /api/readings?date=YYYY-MM-DD` | Read the signed-in user's daily readings. |
 | `POST /api/readings` | Create a reading. |
 | `PATCH /api/readings/:id`, `DELETE /api/readings/:id` | Change or delete an owned reading. |
-| `GET /api/reports?date=YYYY-MM-DD` | Daily, month-to-date, and previous-month summaries. |
+| `GET /api/reports?date=YYYY-MM-DD` | Daily, month-to-date, and previous-month summaries with their ordered reading arrays. |
 | `GET /api/health` | Check API/database connectivity. |
 
 Create and edit payloads contain `{ "date": "2026-11-15", "slot": "morning_fasting", "value": 104 }`. Editing submits all three editable fields. Errors use `{ "error": { "code": "…", "message": "…", "fields": { "value": "…" } } }`, with `fields` supplied when relevant. See the [API contract](docs/API-CONTRACT.md) for response shapes and status codes.
@@ -168,6 +177,6 @@ Create and edit payloads contain `{ "date": "2026-11-15", "slot": "morning_fasti
 - **Averages:** every reading has equal weight; the average is rounded to one decimal, without averaging daily averages.
 - **Validation precedence:** a create on a full day returns the daily-limit error; otherwise a duplicate slot returns a slot conflict. Edits exclude the row being edited, so an unchanged save on a full day works.
 - **Authentication:** bcrypt uses cost 12; passwords must be at least eight characters and at most 72 UTF-8 bytes. Sessions use HttpOnly, SameSite=Lax cookies with login-time regeneration and server-side logout. JSON writes check browser origin; authentication attempts are rate-limited.
-- **Scope:** Docker Compose and frontend form tests are included. Hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission. The app is a measurement record, with fictional data for its demonstration.
-- **With more time:** add per-user timezones, account recovery, report export, broader browser automation, and a carefully labelled trend chart. Deployment would also need HTTPS/proxy configuration, operational monitoring, and a separate non-superuser database role.
+- **Scope:** Docker Compose, monthly charts, and frontend form/chart tests are included. Hosting, doctor access, Redis caching, reminders, and clinical interpretation are outside this submission. The app is a measurement record, with fictional data for its demonstration.
+- **With more time:** add per-user timezones, account recovery, report export, and broader browser automation. Deployment would also need HTTPS/proxy configuration, operational monitoring, and a separate non-superuser database role.
 - **AI assistance:** OpenAI Codex assisted with implementation, tests, documentation, and independent code review. This repository records that assistance openly; the accompanying walkthrough explains the decisions and tradeoffs for candidate review.

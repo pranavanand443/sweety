@@ -1,0 +1,2024 @@
+{
+  "summary": {
+    "fails": 0,
+    "reflex": 0,
+    "warns": 0,
+    "waived": 0,
+    "rejected": 0,
+    "answered": 3,
+    "dismissed": 0,
+    "notes": 220,
+    "files": 9,
+    "render": "off",
+    "kept": "kept: links 4/4, handlers 40/41 (1 dropped on record); before 268 FAIL, 204 REFLEX, now 0 FAIL, 0 REFLEX"
+  },
+  "findings": [
+    {
+      "gate": "F4",
+      "grade": "ANSWERED",
+      "tier": "finish",
+      "file": "client/src/App.jsx",
+      "line": 76,
+      "evidence": "two filled buttons side by side in the hero: \"\" and \"Fill demo account\"",
+      "fix": "One filled primary per screen; the second action is outlined or a typographic link"
+    },
+    {
+      "gate": "F4",
+      "grade": "ANSWERED",
+      "tier": "finish",
+      "file": "client/src/styles.css",
+      "line": 47,
+      "evidence": "7 filled primary-button recipes: .button-secondary + .button-danger + .icon-button +…",
+      "fix": "One filled primary per page; demote the rest to outline/quiet variants"
+    },
+    {
+      "gate": "F5",
+      "grade": "ANSWERED",
+      "tier": "finish",
+      "file": "client/src/styles.css",
+      "line": 205,
+      "evidence": "icon-in-coloured-circle coin: .empty-icon",
+      "fix": "Drop the tinted coin; set the icon at text size in currentColor"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 34,
+      "evidence": "gap: 9px (off the 4px scale) on .brand",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 38,
+      "evidence": "gap: 5px (off the 4px scale) on .brand-small",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 42,
+      "evidence": "padding: 12px 18px (off the 4px scale) on .brand-small .button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 58,
+      "evidence": "padding: 42px 8% (off the 4px scale) on .auth-form-side",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 60,
+      "evidence": "padding: 50px 0 (off the 4px scale) on .auth-form-wrap",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 61,
+      "evidence": "margin-bottom: 14px (off the 4px scale) on .auth-form-wrap>.eyebrow",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 63,
+      "evidence": "margin-top: 14px (off the 4px scale) on .auth-intro",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 63,
+      "evidence": "margin-bottom: 31px (off the 4px scale) on .auth-intro",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 67,
+      "evidence": "padding: 0 13px (off the 4px scale) on .field input,.field select",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 72,
+      "evidence": "margin-top: 3px (off the 4px scale) on .auth-submit",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 73,
+      "evidence": "margin-left: 3px (off the 4px scale) on .auth-submit svg:last-child",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 77,
+      "evidence": "margin-top: 29px (off the 4px scale) on .demo-login",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 77,
+      "evidence": "padding-top: 23px (off the 4px scale) on .demo-login",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 78,
+      "evidence": "margin-right: 5px (off the 4px scale) on .demo-login>span",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 79,
+      "evidence": "gap: 5px (off the 4px scale) on .demo-login button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 80,
+      "evidence": "margin-top: 7px (off the 4px scale) on .demo-login p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 81,
+      "evidence": "gap: 6px (off the 4px scale) on .auth-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 82,
+      "evidence": "padding: 49px 40px 33px (off the 4px scale) on .auth-story",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 83,
+      "evidence": "gap: 7px (off the 4px scale) on .story-tag",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 83,
+      "evidence": "padding: 9px 14px (off the 4px scale) on .story-tag",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 84,
+      "evidence": "margin-top: 47px (off the 4px scale) on .auth-art",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 88,
+      "evidence": "padding: 22px (off the 4px scale) on .art-chart",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 89,
+      "evidence": "gap: 10px (off the 4px scale) on .art-chart-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 90,
+      "evidence": "margin-top: 3px (off the 4px scale) on .art-chart-top small",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 93,
+      "evidence": "margin: 23px 0 12px (off the 4px scale) on .art-chart-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 94,
+      "evidence": "margin-top: 5px (off the 4px scale) on .art-chart-value>span",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 97,
+      "evidence": "padding: 14px 20px 14px 14px (off the 4px scale) on .art-saved",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 97,
+      "evidence": "gap: 10px (off the 4px scale) on .art-saved",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 103,
+      "evidence": "margin-top: 43px (off the 4px scale) on .story-copy",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 105,
+      "evidence": "margin-top: 19px (off the 4px scale) on .story-copy p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 106,
+      "evidence": "padding-top: 45px (off the 4px scale) on .story-bottom",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 106,
+      "evidence": "gap: 7px (off the 4px scale) on .story-bottom",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 110,
+      "evidence": "padding: 34px 21px 0 (off the 4px scale) on .sidebar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 111,
+      "evidence": "margin-left: 10px (off the 4px scale) on .sidebar-brand",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 112,
+      "evidence": "margin: 49px 0 15px 14px (off the 4px scale) on .nav-label",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 114,
+      "evidence": "gap: 11px (off the 4px scale) on .sidebar nav>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 114,
+      "evidence": "padding: 13px 14px (off the 4px scale) on .sidebar nav>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 120,
+      "evidence": "padding: 21px 18px (off the 4px scale) on .sidebar-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 120,
+      "evidence": "margin: 30px 3px (off the 4px scale) on .sidebar-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 121,
+      "evidence": "margin-bottom: 13px (off the 4px scale) on .sidebar-note>span",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 124,
+      "evidence": "margin: 0 -21px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 124,
+      "evidence": "padding: 21px 20px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 124,
+      "evidence": "gap: 9px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 130,
+      "evidence": "margin-left: 230px (off the 4px scale) on .workspace",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 131,
+      "evidence": "padding: 0 43px (off the 4px scale) on .topbar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 132,
+      "evidence": "gap: 11px (off the 4px scale) on .breadcrumb",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 135,
+      "evidence": "gap: 6px (off the 4px scale) on .privacy-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 136,
+      "evidence": "padding: 36px 43px 0 (off the 4px scale) on .main-content",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 137,
+      "evidence": "margin-bottom: 30px (off the 4px scale) on .page-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 138,
+      "evidence": "margin-bottom: 9px (off the 4px scale) on .page-heading>.eyebrow,.page-heading>div>.eyebrow",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 140,
+      "evidence": "margin-top: 10px (off the 4px scale) on .page-heading p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 141,
+      "evidence": "gap: 3px (off the 4px scale) on .date-picker",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 141,
+      "evidence": "padding: 5px (off the 4px scale) on .date-picker",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 143,
+      "evidence": "gap: 9px (off the 4px scale) on .date-label",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 143,
+      "evidence": "padding: 2px 9px (off the 4px scale) on .date-label",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 145,
+      "evidence": "margin-top: 3px (off the 4px scale) on .date-label small",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 149,
+      "evidence": "gap: 30px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 149,
+      "evidence": "padding: 24px 25px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 153,
+      "evidence": "margin-top: 7px (off the 4px scale) on .overview-main p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 158,
+      "evidence": "gap: 5px (off the 4px scale) on .progress-segments",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 158,
+      "evidence": "margin-top: 9px (off the 4px scale) on .progress-segments",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 161,
+      "evidence": "margin-bottom: 17px (off the 4px scale) on .section-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 164,
+      "evidence": "gap: 15px (off the 4px scale) on .slot-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 165,
+      "evidence": "padding: 19px 18px 16px (off the 4px scale) on .slot-card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 167,
+      "evidence": "gap: 5px (off the 4px scale) on .slot-card-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 167,
+      "evidence": "margin-bottom: 19px (off the 4px scale) on .slot-card-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 174,
+      "evidence": "gap: 3px (off the 4px scale) on .recorded-badge",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 174,
+      "evidence": "padding: 4px 5px (off the 4px scale) on .recorded-badge",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 176,
+      "evidence": "margin-top: 7px (off the 4px scale) on .slot-card>p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 177,
+      "evidence": "gap: 7px (off the 4px scale) on .slot-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 177,
+      "evidence": "margin: 23px 0 18px (off the 4px scale) on .slot-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 180,
+      "evidence": "gap: 6px (off the 4px scale) on .slot-button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 180,
+      "evidence": "padding: 9px 4px (off the 4px scale) on .slot-button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 186,
+      "evidence": "gap: 14px (off the 4px scale) on .panel-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 186,
+      "evidence": "padding: 23px 24px 21px (off the 4px scale) on .panel-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 188,
+      "evidence": "margin-top: 7px (off the 4px scale) on .panel-heading p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 189,
+      "evidence": "padding: 5px 10px (off the 4px scale) on .count-pill",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 192,
+      "evidence": "padding: 13px 24px (off the 4px scale) on .reading-table th",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 193,
+      "evidence": "padding: 14px 24px (off the 4px scale) on .reading-table td",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 197,
+      "evidence": "margin-left: 3px (off the 4px scale) on .reading-table .unit",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 198,
+      "evidence": "gap: 11px (off the 4px scale) on .table-slot",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 204,
+      "evidence": "padding: 35px 20px 39px (off the 4px scale) on .empty-state",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 205,
+      "evidence": "margin-bottom: 14px (off the 4px scale) on .empty-icon",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 208,
+      "evidence": "padding: 9px 14px (off the 4px scale) on .empty-state .button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 209,
+      "evidence": "gap: 11px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 209,
+      "evidence": "padding: 17px 18px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 209,
+      "evidence": "margin-top: 23px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 213,
+      "evidence": "gap: 6px (off the 4px scale) on .gentle-note>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 215,
+      "evidence": "padding: 30px 0 22px (off the 4px scale) on .workspace-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 216,
+      "evidence": "gap: 13px (off the 4px scale) on .workspace-footer>span:first-child",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 218,
+      "evidence": "margin: 34px 0 25px (off the 4px scale) on .report-controls",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 219,
+      "evidence": "gap: 3px (off the 4px scale) on .report-tabs",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 220,
+      "evidence": "padding: 10px 18px (off the 4px scale) on .report-tabs button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 223,
+      "evidence": "gap: 6px (off the 4px scale) on .report-range",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 224,
+      "evidence": "gap: 15px (off the 4px scale) on .stat-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 225,
+      "evidence": "padding: 22px 20px (off the 4px scale) on .stat-card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 226,
+      "evidence": "gap: 10px (off the 4px scale) on .stat-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 228,
+      "evidence": "gap: 6px (off the 4px scale) on .stat-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 230,
+      "evidence": "margin-top: 13px (off the 4px scale) on .stat-card>p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 237,
+      "evidence": "padding: 38px 20px 42px (off the 4px scale) on .period-summary",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 238,
+      "evidence": "margin: 0 auto 21px (off the 4px scale) on .summary-mark",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 242,
+      "evidence": "margin-top: 23px (off the 4px scale) on .summary-rule",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 243,
+      "evidence": "margin-top: 23px (off the 4px scale) on .report-explanation",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 243,
+      "evidence": "padding: 18px 21px (off the 4px scale) on .report-explanation",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 246,
+      "evidence": "margin-top: 5px (off the 4px scale) on .report-explanation p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 247,
+      "evidence": "padding-top: 45px (off the 4px scale) on .report-detail .empty-state",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 247,
+      "evidence": "padding-bottom: 45px (off the 4px scale) on .report-detail .empty-state",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 249,
+      "evidence": "padding: 27px (off the 4px scale) on .modal",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 255,
+      "evidence": "margin-top: 25px (off the 4px scale) on .reading-form",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 256,
+      "evidence": "gap: 15px (off the 4px scale) on .form-row",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 259,
+      "evidence": "margin-top: 22px (off the 4px scale) on .glucose-field",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 262,
+      "evidence": "padding-left: 49px (off the 4px scale) on .glucose-input>input",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 262,
+      "evidence": "padding-right: 65px (off the 4px scale) on .glucose-input>input",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 267,
+      "evidence": "gap: 10px (off the 4px scale) on .form-actions",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 267,
+      "evidence": "padding-top: 23px (off the 4px scale) on .form-actions",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 269,
+      "evidence": "padding: 12px 14px (off the 4px scale) on .error-banner",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 273,
+      "evidence": "gap: 10px (off the 4px scale) on .toast",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 273,
+      "evidence": "padding: 12px 12px 12px 14px (off the 4px scale) on .toast",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 276,
+      "evidence": "padding: 30px (off the 4px scale) on .full-loading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 283,
+      "evidence": "padding-top: 10px (off the 4px scale) on .dashboard-skeleton",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 286,
+      "evidence": "margin-top: 18px (off the 4px scale) on .skeleton-text",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 287,
+      "evidence": "margin-top: 35px (off the 4px scale) on .skeleton-banner",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 288,
+      "evidence": "gap: 15px (off the 4px scale) on .skeleton-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 288,
+      "evidence": "margin-top: 45px (off the 4px scale) on .skeleton-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 290,
+      "evidence": "margin-top: 30px (off the 4px scale) on .skeleton-table",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 297,
+      "evidence": "margin-top: 57px (off the 4px scale) on .story-copy",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 301,
+      "evidence": "margin-left: 205px (off the 4px scale) on .workspace",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 302,
+      "evidence": "padding: 29px 29px 0 (off the 4px scale) on .main-content",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 303,
+      "evidence": "padding: 0 29px (off the 4px scale) on .topbar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 305,
+      "evidence": "gap: 11px (off the 4px scale) on .slot-grid,.stat-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 306,
+      "evidence": "padding: 16px 14px 14px (off the 4px scale) on .slot-card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 315,
+      "evidence": "padding: 10px 12px (off the 4px scale) on .report-tabs button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 317,
+      "evidence": "padding-left: 30px (off the 4px scale) on .auth-story",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 317,
+      "evidence": "padding-right: 30px (off the 4px scale) on .auth-story",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 329,
+      "evidence": "padding-left: 13px (off the 4px scale) on .sidebar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 329,
+      "evidence": "padding-right: 13px (off the 4px scale) on .sidebar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 333,
+      "evidence": "margin-left: 6px (off the 4px scale) on .sidebar-brand",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 334,
+      "evidence": "padding: 12px 11px (off the 4px scale) on .sidebar nav>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 335,
+      "evidence": "margin-left: -13px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 335,
+      "evidence": "margin-right: -13px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 335,
+      "evidence": "gap: 7px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 339,
+      "evidence": "padding: 16px 13px (off the 4px scale) on .sidebar-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 341,
+      "evidence": "padding: 26px 24px 0 (off the 4px scale) on .main-content",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 343,
+      "evidence": "gap: 15px (off the 4px scale) on .page-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 346,
+      "evidence": "margin-top: 18px (off the 4px scale) on .date-picker",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 347,
+      "evidence": "gap: 14px (off the 4px scale) on .slot-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 352,
+      "evidence": "padding: 5px 6px (off the 4px scale) on .recorded-badge",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 353,
+      "evidence": "margin-bottom: 17px (off the 4px scale) on .slot-card-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 355,
+      "evidence": "padding: 10px (off the 4px scale) on .slot-button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 356,
+      "evidence": "padding: 21px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 362,
+      "evidence": "padding: 15px 14px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 362,
+      "evidence": "gap: 10px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 370,
+      "evidence": "gap: 14px (off the 4px scale) on .stat-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 372,
+      "evidence": "padding: 23px (off the 4px scale) on .stat-card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 376,
+      "evidence": "padding: 10px 19px (off the 4px scale) on .report-tabs button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 383,
+      "evidence": "padding: 31px 28px (off the 4px scale) on .auth-form-side",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 384,
+      "evidence": "padding: 55px 0 (off the 4px scale) on .auth-form-wrap",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 387,
+      "evidence": "padding-top: 15px (off the 4px scale) on .auth-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 388,
+      "evidence": "padding: 18px 20px 0 (off the 4px scale) on .sidebar",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 401,
+      "evidence": "gap: 15px (off the 4px scale) on .sidebar nav",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 401,
+      "evidence": "margin-top: -3px (off the 4px scale) on .sidebar nav",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 402,
+      "evidence": "padding: 10px 5px 13px (off the 4px scale) on .sidebar nav>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 402,
+      "evidence": "gap: 7px (off the 4px scale) on .sidebar nav>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 407,
+      "evidence": "gap: 7px (off the 4px scale) on .breadcrumb",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 410,
+      "evidence": "padding: 26px 20px 0 (off the 4px scale) on .main-content",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 415,
+      "evidence": "padding: 3px (off the 4px scale) on .date-picker",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 415,
+      "evidence": "margin-top: 19px (off the 4px scale) on .date-picker",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 416,
+      "evidence": "gap: 5px (off the 4px scale) on .date-label",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 416,
+      "evidence": "padding: 2px 5px (off the 4px scale) on .date-label",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 421,
+      "evidence": "padding: 19px 18px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 421,
+      "evidence": "margin-bottom: 27px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 421,
+      "evidence": "gap: 15px (off the 4px scale) on .daily-overview",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 428,
+      "evidence": "margin-top: 6px (off the 4px scale) on .progress-segments",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 429,
+      "evidence": "margin-bottom: 14px (off the 4px scale) on .section-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 436,
+      "evidence": "margin-bottom: 17px (off the 4px scale) on .slot-card-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 442,
+      "evidence": "margin: 22px 0 18px (off the 4px scale) on .slot-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 444,
+      "evidence": "padding: 9px 4px (off the 4px scale) on .slot-button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 445,
+      "evidence": "margin-bottom: 23px (off the 4px scale) on .slots-section",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 446,
+      "evidence": "padding: 18px (off the 4px scale) on .panel-heading",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 448,
+      "evidence": "margin-top: 6px (off the 4px scale) on .panel-heading p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 449,
+      "evidence": "padding: 5px 8px (off the 4px scale) on .count-pill",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 450,
+      "evidence": "padding: 12px 14px (off the 4px scale) on .reading-table th",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 451,
+      "evidence": "padding: 13px 14px (off the 4px scale) on .reading-table td",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 452,
+      "evidence": "gap: 7px (off the 4px scale) on .table-slot",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 463,
+      "evidence": "padding: 15px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 463,
+      "evidence": "gap: 10px (off the 4px scale) on .gentle-note",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 467,
+      "evidence": "margin-left: 38px (off the 4px scale) on .gentle-note>a",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 468,
+      "evidence": "padding: 25px 0 20px (off the 4px scale) on .workspace-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 468,
+      "evidence": "gap: 11px (off the 4px scale) on .workspace-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 471,
+      "evidence": "margin: 25px 0 21px (off the 4px scale) on .report-controls",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 473,
+      "evidence": "padding: 10px 12px (off the 4px scale) on .report-tabs button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 475,
+      "evidence": "margin-bottom: 23px (off the 4px scale) on .stat-grid",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 476,
+      "evidence": "padding: 19px 16px (off the 4px scale) on .stat-card",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 477,
+      "evidence": "gap: 7px (off the 4px scale) on .stat-top",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 479,
+      "evidence": "gap: 5px (off the 4px scale) on .stat-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 479,
+      "evidence": "margin-top: 21px (off the 4px scale) on .stat-value",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 482,
+      "evidence": "padding: 33px 23px (off the 4px scale) on .period-summary",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 486,
+      "evidence": "gap: 10px (off the 4px scale) on .report-explanation",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 490,
+      "evidence": "padding: 29px 17px 33px (off the 4px scale) on .empty-state",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 498,
+      "evidence": "padding: 0 10px (off the 4px scale) on .field input,.field select",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 500,
+      "evidence": "padding-left: 45px (off the 4px scale) on .glucose-input>input",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 505,
+      "evidence": "padding: 11px 14px (off the 4px scale) on .form-actions .button",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 506,
+      "evidence": "padding: 11px (off the 4px scale) on .toast",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 626,
+      "evidence": "margin-bottom: -30px (off the 4px scale) on .story-tag",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 661,
+      "evidence": "gap: 14px (off the 4px scale) on .workspace-footer",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 666,
+      "evidence": "padding-left: 10px (off the 4px scale) on .reading-table th,.reading-table td",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 666,
+      "evidence": "padding-right: 10px (off the 4px scale) on .reading-table th,.reading-table td",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 666,
+      "evidence": "gap: 6px (off the 4px scale) on .table-slot",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/styles.css",
+      "line": 667,
+      "evidence": "gap: 6px (off the 4px scale) on .user-area",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 18,
+      "evidence": "margin-top: 7px (off the 4px scale) on .trend-caption p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 20,
+      "evidence": "column-gap: 22px (off the 4px scale) on .trend-legend",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 20,
+      "evidence": "margin: 23px 0 16px (off the 4px scale) on .trend-legend",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 21,
+      "evidence": "gap: 7px (off the 4px scale) on .trend-legend li",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 29,
+      "evidence": "margin-left: 5px (off the 4px scale) on .trend-data summary span",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 32,
+      "evidence": "margin-bottom: 14px (off the 4px scale) on .trend-table-scroll",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 34,
+      "evidence": "padding: 0 10px 10px (off the 4px scale) on .trend-data caption",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 35,
+      "evidence": "padding: 10px (off the 4px scale) on .trend-data th, .trend-data td",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 49,
+      "evidence": "margin-top: 9px (off the 4px scale) on .trend-explanation",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 52,
+      "evidence": "margin-top: 9px (off the 4px scale) on .trend-empty p",
+      "fix": "Use the 4px spacing scale"
+    },
+    {
+      "gate": "24b",
+      "grade": "NOTE",
+      "tier": "reflex",
+      "file": "client/src/trend-chart.css",
+      "line": 58,
+      "evidence": "margin-top: 18px (off the 4px scale) on .trend-legend",
+      "fix": "Use the 4px spacing scale"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "date": "2026-11-15",
+    "mode": "redesign",
+    "depth": "polish",
+    "scope": "app",
+    "genre": "modern-minimal",
+    "theme": "existing Sweety palette",
+    "shape": "app screen",
+    "prompt": "Polish the existing Sweety interface with Hallmark, preserving its layout and behavior; add a persistent light/dark theme toggle.",
+    "preserved": [
+      "routes",
+      "links",
+      "fields",
+      "API calls",
+      "handlers",
+      "daily/report layout"
+    ],
+    "changes": [
+      "role-named light/dark color and font tokens",
+      "plain task-specific headings and helper copy",
+      "sentence-case table/nav labels",
+      "instant focus and active states",
+      "tabular figures",
+      "native dark color scheme",
+      "top-right theme control",
+      "factual four-slot auth diagram",
+      "44px real hit targets with no overlap",
+      "auth mode switch clears password",
+      "save/delete 401 expires the session and returns to sign-in"
+    ],
+    "staticBefore": {
+      "fails": 268,
+      "reflex": 204,
+      "warns": 33
+    },
+    "staticAfter": {
+      "fails": 0,
+      "reflex": 0,
+      "warns": 0,
+      "waived": 0,
+      "rejected": 0,
+      "answered": 3,
+      "dismissed": 0,
+      "notes": 220,
+      "files": 9,
+      "render": "off",
+      "kept": "kept: links 4/4, handlers 40/41 (1 dropped on record); before 268 FAIL, 204 REFLEX, now 0 FAIL, 0 REFLEX"
+    },
+    "judgedWaivers": [
+      {
+        "gate": "16",
+        "reason": "Retain brief live server-confirmation status after modal dismissal so save/delete completion is announced during report refresh."
+      }
+    ],
+    "layoutNotes": "220 static notes preserved by polish scope, predominantly spacing, including the separately added chart source. No claim these were fixed.",
+    "verification": {
+      "lint": "passed: client and ThemeToggle test",
+      "tests": "13 RTL tests passed (10 form, 3 theme)",
+      "build": "passed",
+      "render": "not run by sloplint; higher-priority computer-use policy requires cua. Parent owns visual review."
+    }
+  }
+]

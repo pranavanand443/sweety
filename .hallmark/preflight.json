@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-15",
+  "mode": "redesign",
+  "depth": "polish",
+  "scope": "app",
+  "genre": "modern-minimal",
+  "material": {
+    "real": [
+      "Sweety React/Express/PostgreSQL app",
+      "four required glucose slots",
+      "real API responses",
+      "fictional demo seed"
+    ],
+    "absent": [
+      "medical claims",
+      "customer metrics",
+      "testimonials"
+    ]
+  },
+  "audience": [
+    "patient",
+    "assessment evaluator"
+  ],
+  "action": "Record and review glucose readings",
+  "tone": "Calm, restrained teal",
+  "preserved": [
+    "layout",
+    "routes",
+    "forms",
+    "handlers",
+    "date/report behavior"
+  ],
+  "introduced": [
+    "semantic color/font tokens",
+    "plain task-specific copy",
+    "stronger contrast/focus states"
+  ],
+  "evidence": [
+    "client/src/App.jsx:61 auth form",
+    "client/src/App.jsx:97 reading table",
+    "client/src/App.jsx:104 daily overview",
+    "client/src/App.jsx:117 reports",
+    "client/src/styles.css:1 existing palette and font stacks"
+  ],
+  "render": "Not run by Hallmark: computer-use policy requires cua; parent is performing the equivalent visual review."
+}

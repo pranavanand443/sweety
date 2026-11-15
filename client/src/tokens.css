@@ -1,0 +1,78 @@
+/* Sweety design tokens: the existing calm palette consolidated by role. */
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: var(--font-body);
+  --color-ink: #263b35;
+  --color-ink-accent: #365f50;
+  --color-muted: #596b5b;
+  --color-secondary: #5a6e52;
+  --color-canvas: #f8faf8;
+  --color-surface: #ffffff;
+  --color-surface-raised: #fcfdfb;
+  --color-surface-subtle: #f5f7f0;
+  --color-surface-soft: #eff4eb;
+  --color-surface-accent: #eaf3e9;
+  --color-surface-accent-strong: #e2eddf;
+  --color-rule: #e4eae1;
+  --color-rule-strong: #c6d5bb;
+  --color-field-edge: #819378;
+  --color-accent: #227d69;
+  --color-accent-hover: #176650;
+  --color-accent-ink: #ffffff;
+  --color-focus: #176650;
+  --color-success: #4c703d;
+  --color-success-surface: #edf5e4;
+  --color-warm-surface: #f9f0de;
+  --color-warm-ink: #84632c;
+  --color-warm-rule: #e6d7b8;
+  --color-night-surface: #eeedf7;
+  --color-night-ink: #6b628a;
+  --color-error: #a6473b;
+  --color-error-hover: #8e352d;
+  --color-error-surface: #fff6f2;
+  --color-error-rule: #edcfc4;
+  --color-selected: #d3e7d9;
+  --color-transparent: #ffffff00;
+  --color-shadow-medium: #263b3518;
+  --color-shadow-soft: #263b3508;
+  --color-shadow-deep: #263b3530;
+  --color-backdrop: #1c332963;
+}
+
+:root[data-theme='dark'] {
+  --color-ink: #e2e9e2;
+  --color-ink-accent: #b9d6c5;
+  --color-muted: #aabaaa;
+  --color-secondary: #a7bca0;
+  --color-canvas: #121a17;
+  --color-surface: #1a2420;
+  --color-surface-raised: #18221e;
+  --color-surface-subtle: #1c2821;
+  --color-surface-soft: #202c24;
+  --color-surface-accent: #20382d;
+  --color-surface-accent-strong: #2c4434;
+  --color-rule: #35473b;
+  --color-rule-strong: #4d6555;
+  --color-field-edge: #809380;
+  --color-accent: #77c3a7;
+  --color-accent-hover: #8ed2b9;
+  --color-accent-ink: #12291e;
+  --color-focus: #8ed2b9;
+  --color-success: #b3cea1;
+  --color-success-surface: #263b27;
+  --color-warm-surface: #382e20;
+  --color-warm-ink: #ddbd81;
+  --color-warm-rule: #67583c;
+  --color-night-surface: #2d2b3a;
+  --color-night-ink: #c2b9dc;
+  --color-error: #eab1a2;
+  --color-error-hover: #f4c5b5;
+  --color-error-surface: #382621;
+  --color-error-rule: #765044;
+  --color-selected: #345b45;
+  --color-transparent: #121a1700;
+  --color-shadow-soft: #060b0808;
+  --color-shadow-medium: #060b0820;
+  --color-shadow-deep: #060b0860;
+  --color-backdrop: #060b08a8;
+}
